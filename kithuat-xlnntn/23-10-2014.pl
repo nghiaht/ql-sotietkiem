@@ -18,15 +18,15 @@ lexicon(hoc,vb,X^hoc(X),subj,_).
 lexicon(hoc,vb,Y^X^hoc(X,Y),subj,obj).
 
 %nam hoc bai o nha
-vp(VP1) --> vp1(PP^VP1),pp(PP).
-pp(IN) --> in(NP^IN),np(NP).
-in(X) --> [Y],{lexicon(Y,in,X)}.
-lexicon(o,in,X^o(X)).
+vp(VP1,X) --> vp1(PP^VP1,X),pp(PP).
+pp(IN) --> in(NP^IN,X),np(NP,X).
+in(X,Z) --> [Y],{lexicon(Y,in,X,Z)}.
+lexicon(o,in,X^o(X),obj1).
 
-vp1(VB) --> vb(NP^VB),np(NP).
+vp1(VB,X) --> vb(NP^VB,X,Y),np(NP,Y).
 
-vb(X) --> [Y],{lexicon(Y,vb,X)}.
-lexicon(hoc,vb,X^Y^Z^hoc(Z,X,Y)).
+%vb(X) --> [Y],{lexicon(Y,vb,X)}.
+lexicon(hoc,vb,X^Y^Z^hoc(Z,X,Y),subj,obj).
 lexicon(nha,nn,nha,obj1).
 lexicon(toan,nn,toan,obj).
 
