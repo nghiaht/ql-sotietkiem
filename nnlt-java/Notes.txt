@@ -1,0 +1,14 @@
+JavaFx
+
+FXML, Scene Builder
+Swing
+CSS
+
+WebView
+Canvas API
+
+Printing (Java 8)
+Multitouch
+
+
+1. JavaFX Architecture Diagram
