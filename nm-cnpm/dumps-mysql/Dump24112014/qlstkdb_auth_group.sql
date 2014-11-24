@@ -1,8 +1,8 @@
-CREATE DATABASE  IF NOT EXISTS `sotietkiem` /*!40100 DEFAULT CHARACTER SET utf8 COLLATE utf8_unicode_ci */;
-USE `sotietkiem`;
+CREATE DATABASE  IF NOT EXISTS `qlstkdb` /*!40100 DEFAULT CHARACTER SET utf8 */;
+USE `qlstkdb`;
 -- MySQL dump 10.13  Distrib 5.6.17, for Win32 (x86)
 --
--- Host: localhost    Database: sotietkiem
+-- Host: localhost    Database: qlstkdb
 -- ------------------------------------------------------
 -- Server version	5.6.21-log
 
@@ -18,34 +18,27 @@ USE `sotietkiem`;
 /*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
 
 --
--- Table structure for table `sotietkiem`
+-- Table structure for table `auth_group`
 --
 
-DROP TABLE IF EXISTS `sotietkiem`;
+DROP TABLE IF EXISTS `auth_group`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
-CREATE TABLE `sotietkiem` (
+CREATE TABLE `auth_group` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
-  `ngay_mo` datetime NOT NULL,
-  `tien_gui` double NOT NULL,
-  `khach_hang_id` int(11) NOT NULL,
-  `loai_tiet_kiem_id` int(11) NOT NULL,
+  `name` varchar(80) NOT NULL,
   PRIMARY KEY (`id`),
-  KEY `loai_tiet_kiem_id_ref_idx` (`loai_tiet_kiem_id`),
-  KEY `fk_khach_hang_idx` (`khach_hang_id`),
-  CONSTRAINT `fk_khach_hang` FOREIGN KEY (`khach_hang_id`) REFERENCES `khachhang` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
-  CONSTRAINT `fk_loai_tiet_kiem` FOREIGN KEY (`loai_tiet_kiem_id`) REFERENCES `loaitietkiem` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+  UNIQUE KEY `name` (`name`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
--- Dumping data for table `sotietkiem`
+-- Dumping data for table `auth_group`
 --
 
-LOCK TABLES `sotietkiem` WRITE;
-/*!40000 ALTER TABLE `sotietkiem` DISABLE KEYS */;
-INSERT INTO `sotietkiem` VALUES (1,'2014-10-16 00:00:00',3780000,2,1);
-/*!40000 ALTER TABLE `sotietkiem` ENABLE KEYS */;
+LOCK TABLES `auth_group` WRITE;
+/*!40000 ALTER TABLE `auth_group` DISABLE KEYS */;
+/*!40000 ALTER TABLE `auth_group` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
 
@@ -57,4 +50,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2014-10-23 14:03:45
+-- Dump completed on 2014-11-24  7:35:30

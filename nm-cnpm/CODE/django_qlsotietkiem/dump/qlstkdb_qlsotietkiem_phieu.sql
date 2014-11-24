@@ -1,8 +1,8 @@
-CREATE DATABASE  IF NOT EXISTS `sotietkiem` /*!40100 DEFAULT CHARACTER SET utf8 COLLATE utf8_unicode_ci */;
-USE `sotietkiem`;
+CREATE DATABASE  IF NOT EXISTS `qlstkdb` /*!40100 DEFAULT CHARACTER SET utf8 */;
+USE `qlstkdb`;
 -- MySQL dump 10.13  Distrib 5.6.17, for Win32 (x86)
 --
--- Host: localhost    Database: sotietkiem
+-- Host: localhost    Database: qlstkdb
 -- ------------------------------------------------------
 -- Server version	5.6.21-log
 
@@ -18,30 +18,31 @@ USE `sotietkiem`;
 /*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
 
 --
--- Table structure for table `loaitietkiem`
+-- Table structure for table `qlsotietkiem_phieu`
 --
 
-DROP TABLE IF EXISTS `loaitietkiem`;
+DROP TABLE IF EXISTS `qlsotietkiem_phieu`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
-CREATE TABLE `loaitietkiem` (
+CREATE TABLE `qlsotietkiem_phieu` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
-  `ky_han` varchar(30) COLLATE utf8_unicode_ci NOT NULL,
-  `lai_suat` double NOT NULL,
-  `thoi_gian_goi_toi_thieu` int(11) NOT NULL,
-  `tien_gui_toi_thieu` int(11) NOT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+  `khach_hang_id` int(11) NOT NULL,
+  `loai_phieu` varchar(3) NOT NULL,
+  `ngay_lap_phieu` datetime NOT NULL,
+  `so_tien` double NOT NULL,
+  PRIMARY KEY (`id`),
+  KEY `qlsotietkiem_phieu_25a88016` (`khach_hang_id`),
+  CONSTRAINT `khach_hang_id_refs_id_374f8c16` FOREIGN KEY (`khach_hang_id`) REFERENCES `qlsotietkiem_khachhang` (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
--- Dumping data for table `loaitietkiem`
+-- Dumping data for table `qlsotietkiem_phieu`
 --
 
-LOCK TABLES `loaitietkiem` WRITE;
-/*!40000 ALTER TABLE `loaitietkiem` DISABLE KEYS */;
-INSERT INTO `loaitietkiem` VALUES (1,'Không kỳ hạn',0.15,15,100000),(2,'3 tháng',0.5,90,100000),(3,'6 tháng',0.55,180,100000);
-/*!40000 ALTER TABLE `loaitietkiem` ENABLE KEYS */;
+LOCK TABLES `qlsotietkiem_phieu` WRITE;
+/*!40000 ALTER TABLE `qlsotietkiem_phieu` DISABLE KEYS */;
+/*!40000 ALTER TABLE `qlsotietkiem_phieu` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
 
@@ -53,4 +54,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2014-10-23 14:03:46
+-- Dump completed on 2014-11-21 11:36:30

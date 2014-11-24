@@ -1,8 +1,8 @@
-CREATE DATABASE  IF NOT EXISTS `sotietkiem` /*!40100 DEFAULT CHARACTER SET utf8 COLLATE utf8_unicode_ci */;
-USE `sotietkiem`;
+CREATE DATABASE  IF NOT EXISTS `qlstkdb` /*!40100 DEFAULT CHARACTER SET utf8 */;
+USE `qlstkdb`;
 -- MySQL dump 10.13  Distrib 5.6.17, for Win32 (x86)
 --
--- Host: localhost    Database: sotietkiem
+-- Host: localhost    Database: qlstkdb
 -- ------------------------------------------------------
 -- Server version	5.6.21-log
 
@@ -18,29 +18,37 @@ USE `sotietkiem`;
 /*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
 
 --
--- Table structure for table `khachhang`
+-- Table structure for table `auth_user`
 --
 
-DROP TABLE IF EXISTS `khachhang`;
+DROP TABLE IF EXISTS `auth_user`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
-CREATE TABLE `khachhang` (
+CREATE TABLE `auth_user` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
-  `ten` varchar(100) COLLATE utf8_unicode_ci NOT NULL,
-  `dia_chi` varchar(200) COLLATE utf8_unicode_ci DEFAULT NULL,
-  `cmnd` varchar(9) COLLATE utf8_unicode_ci DEFAULT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+  `password` varchar(128) NOT NULL,
+  `last_login` datetime NOT NULL,
+  `is_superuser` tinyint(1) NOT NULL,
+  `username` varchar(30) NOT NULL,
+  `first_name` varchar(30) NOT NULL,
+  `last_name` varchar(30) NOT NULL,
+  `email` varchar(75) NOT NULL,
+  `is_staff` tinyint(1) NOT NULL,
+  `is_active` tinyint(1) NOT NULL,
+  `date_joined` datetime NOT NULL,
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `username` (`username`)
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
--- Dumping data for table `khachhang`
+-- Dumping data for table `auth_user`
 --
 
-LOCK TABLES `khachhang` WRITE;
-/*!40000 ALTER TABLE `khachhang` DISABLE KEYS */;
-INSERT INTO `khachhang` VALUES (1,'Huỳnh Trọng Nghĩa','Quảng Ngãi','212597097'),(2,'Hồ Nguyễn Anh Kha','Bình Dương','210000001'),(3,'Đỗ Viết Liêm','Đồng Tháp','210000009'),(5,'Phan Thi Tuyet','Quang Ngai','212999999');
-/*!40000 ALTER TABLE `khachhang` ENABLE KEYS */;
+LOCK TABLES `auth_user` WRITE;
+/*!40000 ALTER TABLE `auth_user` DISABLE KEYS */;
+INSERT INTO `auth_user` VALUES (1,'pbkdf2_sha256$12000$YHh3thxl2TIy$CjpVC7koalFkxtpN8jxOUqQLW76MUMlX6vCScbBnIZ8=','2014-11-22 16:58:44',1,'admin','','','nghia.ht@hotmail.com',1,1,'2014-11-21 01:09:44');
+/*!40000 ALTER TABLE `auth_user` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
 
@@ -52,4 +60,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2014-10-23 14:03:45
+-- Dump completed on 2014-11-24  7:35:38
